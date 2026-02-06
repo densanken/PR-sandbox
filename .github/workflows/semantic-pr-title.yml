@@ -1,0 +1,68 @@
+name: Semantic PR Title
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - edited
+      - synchronize
+
+permissions:
+  statuses: write
+  pull-requests: write
+
+jobs:
+  lint:
+    name: Validate PR title
+    runs-on: ubuntu-slim
+    steps:
+      - name: Lint PR title
+        id: lint_pr_title
+        uses: amannn/action-semantic-pull-request@v6
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+        # プライベートリポジトリ向けの `[WIP]` 接頭辞対応
+        with:
+          wip: true
+
+      - name: Comment on failure
+        if: always() && (steps.lint_pr_title.outputs.error_message != null)
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: semantic-pr-title
+          message: |
+            Pull Requests のタイトルは [Conventional Commits](https://www.conventionalcommits.org/ja/v1.0.0/) に従う必要があります。
+            提案されたタイトルは調整が必要なようです。
+
+            以下のフォーマットに従ってください。
+
+            ```
+            feat(api): add user endpoint
+            ^    ^     ^
+            |    |     |__ subject
+            |    |_______ scope（任意）
+            |____________ type
+            ```
+
+            > [!NOTE]
+            > 先頭に変更の種類（type）を付けて、その後に短く変更の内容（subject）を書きます。
+            > `scope` は任意ですが、書く場合は `(scope)` を `type` の後に付けてください。
+
+            > [!TIP]
+            > プライベートリポジトリ向け
+            > ドラフト (Work in Progress) PR の場合、タイトルの先頭に `[WIP]` を付けてください。
+            > なお、マージの際にはこの接頭辞を削除してください。
+
+            詳細（エラー）:
+            ```
+            ${{ steps.lint_pr_title.outputs.error_message }}
+            ```
+
+      - name: Clear comment on success
+        if: always() && (steps.lint_pr_title.outputs.error_message == null)
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: semantic-pr-title
+          delete: true
