@@ -24,6 +24,12 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
         with:
+          disallowScopes: |
+            .*[A-Z].*
+          subjectPattern: ^(?![A-Z]).+$
+          subjectPatternError: |
+            Pull Request のタイトル "{title}" に含まれる subject "{subject}" がルールに一致しませんでした。
+            subject は大文字で始まらないようにしてください。
           # 主にプライベートリポジトリ向けの `[WIP]` 接頭辞対応
           # これを有効にする場合、statuses: write 権限が必要
           wip: true
