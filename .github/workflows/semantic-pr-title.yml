@@ -62,8 +62,7 @@ jobs:
             > Revert PR の場合、タイトルは `revert: <original commit>` の形式にする必要があります。
 
             > [!TIP]
-            > 主にプライベートリポジトリ向け
-            > ドラフト（Work in Progress）PR の場合、タイトルの先頭に `[WIP]` を付けてください。
+            > ドラフト（Work in Progress）PR の場合、タイトルの先頭に `[WIP]` を付けることができます。
             > なお、マージの際にはこの `[WIP]` を削除してください。
 
             詳細（エラー）:
