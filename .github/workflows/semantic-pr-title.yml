@@ -56,6 +56,7 @@ jobs:
             > [!NOTE]
             > 先頭に変更の種類 `type` を付け、その後に短く変更の内容 `subject` を書きます。
             > `scope` は任意ですが、書く場合は `(scope)` を `type` の後に付けてください。
+            > なお、`scope` に大文字を使用することはできず、`subject` を大文字で始めることはできません。
 
             > [!NOTE]
             > Revert PR の場合、タイトルは `revert: <original commit>` の形式にする必要があります。
