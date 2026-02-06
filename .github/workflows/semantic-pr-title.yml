@@ -25,7 +25,7 @@ jobs:
 
         with:
           disallowScopes: |
-            [A-Z]+
+            .*[A-Z].*
           subjectPattern: ^(?![A-Z]).+$
           subjectPatternError: |
             Pull Request のタイトル "{title}" に含まれる subject "{subject}" がルールに一致しませんでした。
