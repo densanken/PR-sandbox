@@ -33,7 +33,7 @@ jobs:
         with:
           header: semantic-pr-title
           message: |
-            Pull Requests のタイトルは [Conventional Commits](https://www.conventionalcommits.org/ja/v1.0.0/) に従う必要があります。
+            Pull Requests のタイトルは [Conventional Commits](https://www.conventionalcommits.org/ja/) に従う必要があります。
             提案されたタイトルは調整が必要なようです。
 
             以下のフォーマットに従ってください。
@@ -41,13 +41,13 @@ jobs:
             ```
             feat(api): add user endpoint
             ^    ^     ^
-            |    |     |__ subject
-            |    |_______ scope（任意）
-            |____________ type
+            │    │     └── subject
+            │    └──────── scope（任意）
+            └───────────── type
             ```
 
             > [!NOTE]
-            > 先頭に変更の種類（type）を付けて、その後に短く変更の内容（subject）を書きます。
+            > 先頭に変更の種類 (`type`) を付けて、その後に短く変更の内容 (`subject`) を書きます。
             > `scope` は任意ですが、書く場合は `(scope)` を `type` の後に付けてください。
 
             > [!TIP]
