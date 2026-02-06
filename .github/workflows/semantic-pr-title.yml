@@ -52,7 +52,7 @@ jobs:
             > `scope` は任意ですが、書く場合は `(scope)` を `type` の後に付けてください。
 
             > [!NOTE]
-            > Revert PR の場合、タイトルは `revert: "<original commit title>"` の形式にする必要があります。
+            > Revert PR の場合、タイトルは `revert: <original commit>` の形式にする必要があります。
 
             > [!TIP]
             > 主にプライベートリポジトリ向け
